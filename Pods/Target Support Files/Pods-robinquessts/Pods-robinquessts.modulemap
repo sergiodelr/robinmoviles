@@ -1,0 +1,6 @@
+framework module Pods_robinquessts {
+  umbrella header "Pods-robinquessts-umbrella.h"
+
+  export *
+  module * { export * }
+}
