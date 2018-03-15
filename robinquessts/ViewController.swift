@@ -8,16 +8,17 @@
 
 import UIKit
 import FirebaseDatabase
+import Firebase
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var questID : String?
+    var questID = "qst-1"
     var newQuestID : String?
     var questActions = [QuestAction]()
     var desc : String?
     var robins : Int?
     var userID = "LBOA6sbjbuXRnE1yMLrozeFeoH92"
-    var FireBase_REF = Database.database().reference()
+    var FireBase_REF : DatabaseReference!
     
     var semaphore = DispatchSemaphore(value: 0)
     
@@ -27,10 +28,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        FireBase_REF = Database.database().reference()
+        print("loadviews")
         // Do any additional setup after loading the view, typically from a nib.
         FireBase_REF.child("children").child(userID).observe(.value, with: { snapshot in
             if let value = snapshot.value as? NSDictionary{
-                self.questID = value["quest"] as? String
+                self.questID = (value["quest"] as? String)!
                 self.robins = value["robins"] as? Int
             }
             self.semaphore.signal()
@@ -38,10 +41,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         semaphore.wait()
         loadQuest()
+        print("viewdidload")
     }
 
     func loadQuest() {
-        FireBase_REF.child("quests").child(questID!).observe(.value, with: { snapshot in
+        FireBase_REF.child("quests").child(questID).observe(.value, with: { snapshot in
             if let value = snapshot.value as? NSDictionary{
                 self.desc = value["description"] as? String
                 self.robins = value["robins"] as? Int

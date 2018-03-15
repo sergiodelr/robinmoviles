@@ -66,6 +66,7 @@
 		9C77381A2058D766000856D4 = {
 			isa = PBXGroup;
 			children = (
+				9C7738382058E60F000856D4 /* GoogleService-Info.plist */,
 				9C7738252058D766000856D4 /* robinquessts */,
 				9C7738242058D766000856D4 /* Products */,
 				3A46644F0F4638F17EA6928A /* Pods */,
@@ -95,7 +96,6 @@
 				75513F8F2059FA590027699B /* PerksTableViewCell.swift */,
 				9C77382D2058D766000856D4 /* Assets.xcassets */,
 				9C77382F2058D766000856D4 /* LaunchScreen.storyboard */,
-				9C7738382058E60F000856D4 /* GoogleService-Info.plist */,
 				9C7738322058D766000856D4 /* Info.plist */,
 			);
 			path = robinquessts;
@@ -392,6 +392,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = robinquessts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.itesm.robinquests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -407,6 +408,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = robinquessts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.itesm.robinquests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
