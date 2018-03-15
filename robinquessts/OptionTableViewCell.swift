@@ -10,6 +10,9 @@ import UIKit
 
 class OptionTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var robinsLabel : UILabel!
+    @IBOutlet weak var optionButton : UIButton!
+    var questAction : QuestAction!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
