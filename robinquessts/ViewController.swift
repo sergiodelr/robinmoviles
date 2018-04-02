@@ -10,58 +10,70 @@ import UIKit
 import FirebaseDatabase
 import Firebase
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, OptionSelect {
+    
 
     var questID = "qst-1"
     var newQuestID : String?
     var questActions = [QuestAction]()
-    var desc : String?
+    var desc : String!
     var robins : Int?
-    var userID = "LBOA6sbjbuXRnE1yMLrozeFeoH92"
+    var userID = "imFloJbncJMTOG95pLNGtb7jzGp1"
     var FireBase_REF : DatabaseReference!
     
-    var semaphore = DispatchSemaphore(value: 0)
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        FireBase_REF = Database.database().reference()
+        print(FireBase_REF)
+        Auth.auth().signIn(withEmail: "s@gmail.com", password: "sergio1"){ (user,error) in
+            
+            
+            self.FireBase_REF.child("children").child(self.userID).observe(.value, with: { snapshot in
+                if let value = snapshot.value as? NSDictionary{
+                    print(value)
+                    self.questID = (value["quest"] as? String)!
+                    self.robins = value["robins"] as? Int
+                }
+            }) { error in
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        FireBase_REF = Database.database().reference()
-        print("loadviews")
-        // Do any additional setup after loading the view, typically from a nib.
-        FireBase_REF.child("children").child(userID).observe(.value, with: { snapshot in
-            if let value = snapshot.value as? NSDictionary{
-                self.questID = (value["quest"] as? String)!
-                self.robins = value["robins"] as? Int
-            }
-            self.semaphore.signal()
-        })
-        
-        semaphore.wait()
+        desc = "descripcion"
+       
         loadQuest()
-        print("viewdidload")
     }
 
     func loadQuest() {
+        FireBase_REF = Database.database().reference()
         FireBase_REF.child("quests").child(questID).observe(.value, with: { snapshot in
-            if let value = snapshot.value as? NSDictionary{
+            if let value = snapshot.value as? NSDictionary {
+                print(value)
                 self.desc = value["description"] as? String
-                self.robins = value["robins"] as? Int
+                self.descriptionLabel.text = self.desc
+                self.questActions.removeAll()
                 var action = QuestAction(snapshot: snapshot.childSnapshot(forPath: "option-1"))
                 self.questActions.append(action)
                 action = QuestAction(snapshot: snapshot.childSnapshot(forPath: "option-2"))
                 self.questActions.append(action)
                 self.tableView.reloadData()
             }
-            self.semaphore.signal()
         })
         
-        semaphore.wait()
-        
-        descriptionLabel.text = desc!
-        tableView.reloadData()
+    }
+    
+    func selectOption(_ sender: OptionTableViewCell) {
+        questID = sender.questAction.questID
+        robins = robins! + sender.questAction.robins
+        loadQuest()
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,9 +89,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "optionCell") as! OptionTableViewCell
         let questAction = questActions[indexPath.row]
         
-        cell.optionButton.titleLabel?.text = questAction.optionDesc
-        cell.robinsLabel.text = "$\(String(describing: questAction.robins))"
+        print(questAction.optionDesc)
+        cell.optionButton.setTitle(questAction.optionDesc, for: .normal)
+        cell.robinsLabel.text = "$\(String(describing: questAction.robins!))"
         cell.questAction = questAction
+        cell.delegate = self
         
         return cell
     }

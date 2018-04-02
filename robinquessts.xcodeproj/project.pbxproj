@@ -16,9 +16,9 @@
 		9C77382C2058D766000856D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C77382A2058D766000856D4 /* Main.storyboard */; };
 		9C77382E2058D766000856D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C77382D2058D766000856D4 /* Assets.xcassets */; };
 		9C7738312058D766000856D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C77382F2058D766000856D4 /* LaunchScreen.storyboard */; };
-		9C7738392058E610000856D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C7738382058E60F000856D4 /* GoogleService-Info.plist */; };
 		9C7738402058F22C000856D4 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77383E2058F22C000856D4 /* OptionTableViewCell.swift */; };
 		9C7738412058F22C000856D4 /* QuestAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C77383F2058F22C000856D4 /* QuestAction.swift */; };
+		9CDACC41206CBBE800FF1672 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CDACC40206CBBE800FF1672 /* GoogleService-Info.plist */; };
 		FC5CE81170B51A657B571511 /* Pods_robinquessts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFE20155A48DC9B1ABD1D56 /* Pods_robinquessts.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,9 +36,9 @@
 		9C77382D2058D766000856D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C7738302058D766000856D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C7738322058D766000856D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C7738382058E60F000856D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C77383E2058F22C000856D4 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		9C77383F2058F22C000856D4 /* QuestAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestAction.swift; sourceTree = "<group>"; };
+		9CDACC40206CBBE800FF1672 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1044428DEE5698B0624F925 /* Pods-robinquessts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-robinquessts.release.xcconfig"; path = "Pods/Target Support Files/Pods-robinquessts/Pods-robinquessts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,7 +66,6 @@
 		9C77381A2058D766000856D4 = {
 			isa = PBXGroup;
 			children = (
-				9C7738382058E60F000856D4 /* GoogleService-Info.plist */,
 				9C7738252058D766000856D4 /* robinquessts */,
 				9C7738242058D766000856D4 /* Products */,
 				3A46644F0F4638F17EA6928A /* Pods */,
@@ -96,6 +95,7 @@
 				75513F8F2059FA590027699B /* PerksTableViewCell.swift */,
 				9C77382D2058D766000856D4 /* Assets.xcassets */,
 				9C77382F2058D766000856D4 /* LaunchScreen.storyboard */,
+				9CDACC40206CBBE800FF1672 /* GoogleService-Info.plist */,
 				9C7738322058D766000856D4 /* Info.plist */,
 			);
 			path = robinquessts;
@@ -172,7 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C7738312058D766000856D4 /* LaunchScreen.storyboard in Resources */,
-				9C7738392058E610000856D4 /* GoogleService-Info.plist in Resources */,
+				9CDACC41206CBBE800FF1672 /* GoogleService-Info.plist in Resources */,
 				9C77382E2058D766000856D4 /* Assets.xcassets in Resources */,
 				9C77382C2058D766000856D4 /* Main.storyboard in Resources */,
 			);
@@ -205,6 +205,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-robinquessts/Pods-robinquessts-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -212,6 +213,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);

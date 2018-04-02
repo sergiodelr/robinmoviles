@@ -6,8 +6,9 @@ target 'robinquessts' do
   use_frameworks!
 
   # Pods for robinquessts
-pod 'Firebase/Core'
-pod 'Firebase/Database'
-pod 'Firebase/Auth'
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Messaging'
 
 end
