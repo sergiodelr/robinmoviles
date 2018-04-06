@@ -13,6 +13,7 @@ class PerksTableViewCell: UITableViewCell {
    
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var price: UILabel!
+    var perkAction : PerkAction!
     
     override func awakeFromNib() {
         super.awakeFromNib()

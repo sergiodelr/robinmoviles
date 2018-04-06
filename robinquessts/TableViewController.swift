@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import Firebase
 
 class TableViewController: UITableViewController {
     
-    var perkList = [Perk]()
+    var perkActions = [PerkAction]()
+    let ref = Database.database().reference().child("Perks")
+    
+//    var perkList = [Perk]()
+//    var perkActions = [PerkAction]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,41 +27,72 @@ class TableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        let perk1 = Perk(name: "Interest Rate", descript: "The kid will be able to ....Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at ultrices massa. Nam bibendum quam a neque maximus, quis pretium neque maximus. Nullam dictum vitae felis fringilla maximus.", price: 30)
-        let perk2 = Perk(name: "Increase Purchase Limit", descript: "Vestibulum vitae accumsan sapien, a molestie nibh. Aenean nisl enim, fringilla ut sapien sit amet, lacinia lacinia erat. Etiam finibus eros quis elementum consequat.", price: 45)
+//        let perk1 = Perk(name: "Interest Rate", descript: "The kid will be able to ....Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at ultrices massa. Nam bibendum quam a neque maximus, quis pretium neque maximus. Nullam dictum vitae felis fringilla maximus.", price: 30)
+//        let perk2 = Perk(name: "Increase Purchase Limit", descript: "Vestibulum vitae accumsan sapien, a molestie nibh. Aenean nisl enim, fringilla ut sapien sit amet, lacinia lacinia erat. Etiam finibus eros quis elementum consequat.", price: 45)
+//
+//        perkList += [perk1, perk2]
         
-        perkList += [perk1, perk2]
+        retrievePerks()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return perkList.count
+        return self.perkActions.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PerksTableViewCell
-        cell.title.text = perkList[indexPath.row].name
         
-        let price = perkList[indexPath.row].price as NSNumber
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        cell.price.text = formatter.string(from: price)
-      
-
+        var perk = PerkAction()
+        perk = perkActions[indexPath.row]
+        cell.title.text = perk.name
+        cell.price.text = perk.price
+        
         return cell
+//        let perkAction = perkActions[indexPath.row] //índice no es válido
+//        print(perkAction.desc)
+//        cell.title.text = "$\(String(describing: perkAction.name!))"
+//        cell.price.text = "$\(String(describing: perkAction.price!))"
+//        cell.perkAction = perkAction
+//
+//        return cell
+        
+        //        cell.title.text = perkList[indexPath.row].name
+        //
+        //        let price = perkList[indexPath.row].price as NSNumber
+        //        let formatter = NumberFormatter()
+        //        formatter.numberStyle = .currency
+        //        cell.price.text = formatter.string(from: price)
+        //
+        //        return cell
     }
+    
+    func retrievePerks() {
+        ref.queryOrdered(byChild: "perk-id").observeEventType(.ChildAdded, withBlock: {
+            (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String:AnyObject] {
+                let perk = PerkAction(snapshot: <#DataSnapshot#>)
+                
+                perk.setValuesForKeysWithDictionary(dictionary)
+                
+                self.perkActions.append(perk)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.reloadData()
+                })
+            }
+        })
+    }
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -103,8 +140,6 @@ class TableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        let perkView = segue.destination as! PerkViewController
         let index = tableView.indexPathForSelectedRow!
-        perkView.perk = perkList[index.row]
+        perkView.perk = perkActions[index.row]
     }
-    
-
 }
