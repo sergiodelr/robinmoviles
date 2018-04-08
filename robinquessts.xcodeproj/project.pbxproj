@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		75513F8E2059F9C00027699B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513F8D2059F9C00027699B /* TableViewController.swift */; };
 		75513F902059FA590027699B /* PerksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513F8F2059FA590027699B /* PerksTableViewCell.swift */; };
-		75513F922059FAFC0027699B /* Perk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513F912059FAFC0027699B /* Perk.swift */; };
 		75513F94205A01E60027699B /* PerkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75513F93205A01E60027699B /* PerkViewController.swift */; };
-		75F8C53A2077F22500209B82 /* PerkAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8C5392077F22500209B82 /* PerkAction.swift */; };
+		75E61F262079B4240055F2F6 /* PerkAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E61F252079B4240055F2F6 /* PerkAction.swift */; };
+		75E61F2C2079C8B90055F2F6 /* Perk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E61F2B2079C8B90055F2F6 /* Perk.swift */; };
 		9C7738272058D766000856D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7738262058D766000856D4 /* AppDelegate.swift */; };
 		9C7738292058D766000856D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7738282058D766000856D4 /* ViewController.swift */; };
 		9C77382C2058D766000856D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C77382A2058D766000856D4 /* Main.storyboard */; };
@@ -26,9 +26,9 @@
 /* Begin PBXFileReference section */
 		75513F8D2059F9C00027699B /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		75513F8F2059FA590027699B /* PerksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerksTableViewCell.swift; sourceTree = "<group>"; };
-		75513F912059FAFC0027699B /* Perk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perk.swift; sourceTree = "<group>"; };
 		75513F93205A01E60027699B /* PerkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerkViewController.swift; sourceTree = "<group>"; };
-		75F8C5392077F22500209B82 /* PerkAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerkAction.swift; sourceTree = "<group>"; };
+		75E61F252079B4240055F2F6 /* PerkAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerkAction.swift; sourceTree = "<group>"; };
+		75E61F2B2079C8B90055F2F6 /* Perk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Perk.swift; path = ../Perk.swift; sourceTree = "<group>"; };
 		7BFE20155A48DC9B1ABD1D56 /* Pods_robinquessts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_robinquessts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		994F8A3916AE6CDB201C8D81 /* Pods-robinquessts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-robinquessts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-robinquessts/Pods-robinquessts.debug.xcconfig"; sourceTree = "<group>"; };
 		9C7738232058D766000856D4 /* robinquessts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = robinquessts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,15 +86,15 @@
 		9C7738252058D766000856D4 /* robinquessts */ = {
 			isa = PBXGroup;
 			children = (
+				75E61F2B2079C8B90055F2F6 /* Perk.swift */,
 				9C7738262058D766000856D4 /* AppDelegate.swift */,
 				9C77383E2058F22C000856D4 /* OptionTableViewCell.swift */,
 				9C77383F2058F22C000856D4 /* QuestAction.swift */,
 				9C7738282058D766000856D4 /* ViewController.swift */,
-				9C77382A2058D766000856D4 /* Main.storyboard */,
-				75F8C5392077F22500209B82 /* PerkAction.swift */,
 				75513F8D2059F9C00027699B /* TableViewController.swift */,
 				75513F93205A01E60027699B /* PerkViewController.swift */,
-				75513F912059FAFC0027699B /* Perk.swift */,
+				9C77382A2058D766000856D4 /* Main.storyboard */,
+				75E61F252079B4240055F2F6 /* PerkAction.swift */,
 				75513F8F2059FA590027699B /* PerksTableViewCell.swift */,
 				9C77382D2058D766000856D4 /* Assets.xcassets */,
 				9C77382F2058D766000856D4 /* LaunchScreen.storyboard */,
@@ -251,13 +251,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C7738412058F22C000856D4 /* QuestAction.swift in Sources */,
-				75F8C53A2077F22500209B82 /* PerkAction.swift in Sources */,
+				75E61F262079B4240055F2F6 /* PerkAction.swift in Sources */,
+				75E61F2C2079C8B90055F2F6 /* Perk.swift in Sources */,
 				9C7738292058D766000856D4 /* ViewController.swift in Sources */,
 				9C7738272058D766000856D4 /* AppDelegate.swift in Sources */,
 				75513F8E2059F9C00027699B /* TableViewController.swift in Sources */,
 				75513F94205A01E60027699B /* PerkViewController.swift in Sources */,
 				9C7738402058F22C000856D4 /* OptionTableViewCell.swift in Sources */,
-				75513F922059FAFC0027699B /* Perk.swift in Sources */,
 				75513F902059FA590027699B /* PerksTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,6 +397,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7BU29P6744;
 				INFOPLIST_FILE = robinquessts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -413,6 +414,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7BU29P6744;
 				INFOPLIST_FILE = robinquessts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

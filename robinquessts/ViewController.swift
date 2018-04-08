@@ -57,6 +57,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         FireBase_REF.child("quests").child(questID).observe(.value, with: { snapshot in
             if let value = snapshot.value as? NSDictionary {
                 print(value)
+                
                 self.desc = value["description"] as? String
                 self.descriptionLabel.text = self.desc
                 self.questActions.removeAll()

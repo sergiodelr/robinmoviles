@@ -13,30 +13,17 @@ import Firebase
 class TableViewController: UITableViewController {
     
     var perkActions = [PerkAction]()
-    let ref = Database.database().reference().child("Perks")
-    
-//    var perkList = [Perk]()
-//    var perkActions = [PerkAction]()
+    var FireBase_REF : DatabaseReference!
+    var perkID = "pk-1"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-//        let perk1 = Perk(name: "Interest Rate", descript: "The kid will be able to ....Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at ultrices massa. Nam bibendum quam a neque maximus, quis pretium neque maximus. Nullam dictum vitae felis fringilla maximus.", price: 30)
-//        let perk2 = Perk(name: "Increase Purchase Limit", descript: "Vestibulum vitae accumsan sapien, a molestie nibh. Aenean nisl enim, fringilla ut sapien sit amet, lacinia lacinia erat. Etiam finibus eros quis elementum consequat.", price: 45)
-//
-//        perkList += [perk1, perk2]
-        
         retrievePerks()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -51,48 +38,12 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PerksTableViewCell
-        
-        var perk = PerkAction()
-        perk = perkActions[indexPath.row]
+        let perk = perkActions[indexPath.row]
         cell.title.text = perk.name
-        cell.price.text = perk.price
-        
-        return cell
-//        let perkAction = perkActions[indexPath.row] //índice no es válido
-//        print(perkAction.desc)
-//        cell.title.text = "$\(String(describing: perkAction.name!))"
-//        cell.price.text = "$\(String(describing: perkAction.price!))"
-//        cell.perkAction = perkAction
-//
-//        return cell
-        
-        //        cell.title.text = perkList[indexPath.row].name
-        //
-        //        let price = perkList[indexPath.row].price as NSNumber
-        //        let formatter = NumberFormatter()
-        //        formatter.numberStyle = .currency
-        //        cell.price.text = formatter.string(from: price)
-        //
-        //        return cell
-    }
-    
-    func retrievePerks() {
-        ref.queryOrdered(byChild: "perk-id").observeEventType(.ChildAdded, withBlock: {
-            (snapshot) in
-            
-            if let dictionary = snapshot.value as? [String:AnyObject] {
-                let perk = PerkAction(snapshot: <#DataSnapshot#>)
-                
-                perk.setValuesForKeysWithDictionary(dictionary)
-                
-                self.perkActions.append(perk)
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.tableView.reloadData()
-                })
-            }
-        })
-    }
+        cell.price.text = "$\(String(perk.price))"
 
+        return cell
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -125,6 +76,16 @@ class TableViewController: UITableViewController {
         return 80
     }
 
+    func retrievePerks() {
+        let ref = Database.database().reference().child("perks")
+        ref.queryOrdered(byChild: "perk-id").observe(.childAdded, with: {
+            (snapshot) in
+            let perk = PerkAction(snapshot: snapshot)
+            self.perkActions.append(perk)
+            self.tableView.reloadData()
+        })
+    }
+    
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -137,9 +98,11 @@ class TableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       let perkView = segue.destination as! PerkViewController
-        let index = tableView.indexPathForSelectedRow!
-        perkView.perk = perkActions[index.row]
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//       let perkView = segue.destination as! PerkViewController
+//        let index = tableView.indexPathForSelectedRow!
+//        perkView.perk = perkActions[index.row]
+//    }
+    
+
 }
