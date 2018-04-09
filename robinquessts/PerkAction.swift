@@ -22,4 +22,11 @@ class PerkAction: NSObject {
         name = value?["nombre"] as? String
         price = value?["precio"] as? Int
     }
+    
+    override init() {
+        perkID = ""
+        name = ""
+        desc = ""
+        price = 0
+    }
 }
