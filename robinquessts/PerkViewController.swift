@@ -9,7 +9,7 @@
 import UIKit
 
 class PerkViewController: UIViewController {
-    var perk = Perk()
+    var perk = PerkAction()
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var descript: UILabel!
@@ -19,23 +19,26 @@ class PerkViewController: UIViewController {
         super.viewDidLoad()
         title = "Perk Detail"
         name.text = perk.name
-        descript.text = perk.descript
+        descript.text = perk.desc
 
         let perkPrice = perk.price as NSNumber
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         price.text = formatter.string(from: perkPrice)
-        
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func btBuy(_ sender: UIButton) {
+        //Agregarlo al myperks del niño
+        
+        //para regresar a la pantalla de perks
+        navigationController?.popViewController(animated: true)
+        
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -45,5 +48,4 @@ class PerkViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
